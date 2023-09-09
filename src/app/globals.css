@@ -1,0 +1,465 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* color */
+  --themes-color: #3abff8;
+  --shadow-theme: #7ebfdb;
+  --rich-black-fogra-29-1: hsl(215, 31%, 14%);
+  --rich-black-fogra-29-2: hsl(230, 14%, 8%);
+  --rich-black-fogra-39: hsl(158, 29%, 5%);
+  --granite-gray: #353434;
+  --light-gray: hsl(0, 0%, 80%);
+  --mint-cream: hsl(160, 100%, 98%);
+  --cultured: #ededed;
+  --white: hsl(0, 0%, 100%);
+  --jet: hsl(0, 0%, 18%);
+
+  /** typography*/
+  --fw-600: 600;
+  --fw-500: 500;
+
+  /**shadow*/
+  --shadow-1: 3px 4px 30px hsla(0, 0%, 53%, 0.1);
+  --shadow-2: 5px 3px 40px hsla(191, 100%, 17%, 0.1);
+
+  /** radius*/
+  --radius-5: 5px;
+
+  /**transition*/
+  --transition-1: 0.25s ease;
+  --transition-2: 0.5s ease;
+  --cubic-out: cubic-bezier(0.33, 0.85, 0.4, 0.96);
+}
+
+/*-----------------------------------*\
+  #RESET
+\*-----------------------------------*/
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  height: auto;
+}
+
+input {
+  width: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+:focus-visible {
+  outline-offset: 4px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: hsl(0, 0%, 98%);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: hsl(0, 0%, 80%);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: hsl(0, 0%, 70%);
+}
+
+/* end */
+
+.hero {
+  width: 100%;
+  height: 100vh;
+  background-image: url(https://www.motherspridepreschool.com/images/slider-1.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  position: relative;
+}
+
+.menu-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.sidebar {
+  width: 35%;
+  height: 100%;
+  background-image: linear-gradient(
+    rgba(78, 0, 225, 0.75),
+    rgba(7, 0, 60, 0.85)
+  );
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 20px 60px;
+  color: #fff;
+}
+
+.top-links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.arrow-icon {
+  width: 30px;
+  cursor: pointer;
+}
+
+.top-links div img {
+  width: 30px;
+  margin-left: 30px;
+  cursor: pointer;
+}
+
+.sidebar h1 {
+  font-size: 60px;
+  margin-top: 150px;
+}
+
+.sidebar h3 {
+  font-weight: 500;
+}
+
+.sidebar p {
+  font-size: 16px;
+  margin-top: 30px;
+}
+
+.sidebar a {
+  display: inline-block;
+  text-decoration: none;
+  color: #e0dde6;
+  font-size: 20px;
+  font-weight: 700;
+  border-radius: 4px;
+}
+
+.hero #btn {
+  position: absolute;
+  top: 50%;
+  left: 30%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+#backVideo {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  cursor: pointer;
+
+  display: none;
+}
+
+@media (min-aspect-ratio: 16/9) {
+  #backVideo {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-aspect-ratio: 16/9) {
+  #backVideo {
+    width: auto;
+    height: 100%;
+  }
+}
+
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.content {
+  position: fixed;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  color: #f1f1f1;
+  width: 100%;
+  padding: 20px;
+}
+
+#myBtn {
+  width: 200px;
+  font-size: 18px;
+  padding: 10px;
+  border: none;
+  background: #000;
+  color: #fff;
+  cursor: pointer;
+}
+
+#myBtn:hover {
+  background: #ddd;
+  color: black;
+}
+
+/* about css */
+.flip-card {
+  background-color: transparent;
+  width: 100%;
+  height: 400px;
+  border: 1px solid var(--themes-color);
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+}
+
+.flip-card-front figure img {
+  position: absolute;
+}
+.flip-card-front figure img h1 {
+  position: relative;
+  top: 100px;
+  left: 0;
+  background-color: orange;
+  z-index: 500;
+}
+
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+/* Style the back side */
+.flip-card-back {
+  background-color: var(--rich-black-fogra-29-2);
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+/* sidebar */
+
+.sidebars .logo {
+  display: block;
+}
+
+.sidebars {
+  width: 120px;
+  height: 100%;
+  background: rgba(10, 10, 10, 0.65);
+  box-shadow: rgba(0, 8px, 32px rgb(2, 4, 24));
+  border-right: 2px solid rgba(255, 255, 255, 0.09);
+
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: 0.4s ease-in-out;
+}
+
+.sidebars.open {
+  width: 360px;
+}
+
+.sidebars .logo {
+  width: 100%;
+  height: 240px;
+  padding: 40px 0;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+}
+
+.sidebars .logo img {
+  width: 56px;
+  transition: 0.4s;
+}
+
+.sidebars.open .logo img {
+  width: 96px;
+}
+
+.sidebars .logo h3 {
+  color: #fff;
+  font-size: 36px;
+  margin-top: 12px;
+  font-variant: small-caps;
+
+  opacity: 0;
+}
+
+.sidebars.open h3 {
+  scale: 1;
+  opacity: 1;
+  transition: 0.4s;
+  transition-delay: 0.2s;
+}
+
+.sidebars .nav-title {
+  color: #dadada;
+  margin: 40px 0 18px;
+  pointer-events: none;
+
+  opacity: 0;
+}
+
+.sidebars.open .nav-title {
+  opacity: 1;
+  transition: 0.4s;
+  transition-delay: 0.2s;
+}
+
+.sidebars nav {
+  padding: 0 30px;
+}
+
+.sidebars nav .nav-item {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border-radius: 4px;
+  width: 100%;
+  height: 56px;
+  padding: 0 16px;
+  margin: 8px 0;
+  color: #fff;
+
+  transition: 0.3s;
+}
+
+.sidebars nav .nav-item.active {
+  background: #ff328e;
+}
+
+.sidebars nav .nav-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.sidebars nav .nav-item i {
+  font-size: 26px;
+}
+
+.sidebars nav .nav-item span {
+  font-size: 18px;
+  margin-left: 8px;
+
+  pointer-events: none;
+  opacity: 0;
+}
+
+.sidebars.open nav .nav-item span {
+  opacity: 1;
+  pointer-events: visible;
+  transition: 0.4s;
+  transition-delay: 0.2s;
+}
+
+.sidebars hr {
+  width: 100%;
+  height: 2px;
+  border-radius: 3px;
+  margin: 40px 0 50px;
+  background: rgba(255, 255, 255, 0.1);
+  opacity: 0;
+}
+
+.sidebars.open hr {
+  opacity: 1;
+  transition: 0.4s;
+}
+
+.sidebars .toggle {
+  position: absolute;
+  color: #fff;
+  top: 35px;
+  right: -10px;
+  font-size: 38px;
+  line-height: 50%;
+  text-align: center;
+  border-radius: 50%;
+  padding: 3px 0 3px 3px;
+  background: linear-gradient(
+    90deg,
+    transparent 50%,
+    rgba(10, 10, 10, 0.65) 50%
+  );
+  height: 34px;
+  width: 34px;
+}
+
+/* .sidebars.open .toggle {
+    transform: translateY(1px);
+} */
+
+.sidebars .toggle i {
+  transition: 0.4s linear;
+  font-size: 28px;
+}
+
+.sidebars.open .toggle i {
+  transform: rotateY(180deg);
+}
+
+/* play btn */
+
+.play-btn {
+  color: hsl(184, 50%, 60%);
+  border: 1px solid hsl(184, 50%, 60%);
+  border-radius: 50%;
+  padding: 0px;
+
+  animation: pulse 2.5s ease infinite;
+}
+
+@keyframes pulse {
+  0%,
+  30% {
+    box-shadow: 0 0 0 hsl(184, 50%, 60%);
+  }
+
+  100% {
+    box-shadow: 0 0 0 8px transparent;
+  }
+}
